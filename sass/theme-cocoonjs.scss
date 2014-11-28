@@ -885,15 +885,17 @@ textarea,
 
 
 }
-$profile-margin-top : 20px;
+
+$profile-margin-top : 25px;
 
 .profile .profile-pic{
   width: 18%;
+
   border-radius: 200px 200px 200px 200px;
   -moz-border-radius: 200px 200px 200px 200px;
   -webkit-border-radius: 200px 200px 200px 200px;
 
-  margin-left: 20px;
+  margin-left: 10%;
   margin-top: $profile-margin-top;
 
   background: #fff;
@@ -910,7 +912,7 @@ $profile-margin-top : 20px;
 .profile .profile-autor{
   float: left;
   margin-top: $profile-margin-top + 5;
-  margin-left: 3px;
+  margin-left: 5px;
 }
 
 .profile .profile-autor h1,.profile .profile-autor h2, .profile .profile-autor p {

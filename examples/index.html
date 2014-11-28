@@ -30,13 +30,12 @@
 <body class="shifter shifter-left">
 <header class="bar bar-nav">
     <button class="btn btn-link btn-nav pull-left shifter-handle">
-        <span class="icon icon-bars"></span>
+        <span class="icon icon-list"></span>
     </button>
     <a class="icon icon-refresh pull-right"></a>
     <a href="#peopover">
         <h1 class="title">
             Valentia
-            <!-- <span class="icon icon-caret"></span>-->
         </h1>
     </a>
 </header>
@@ -75,9 +74,36 @@
             </div>
         </div>
     </div>
-    <a href="" class="">Valentia</a>
-    <a href="" class="">Valentia</a>
-    <a href="" class="">Valentia</a>
+    <h5 class="content-padded">Your account</h5>
+    <ul class="table-view">
+        <li class="table-view-cell media">
+            <a class="navigate-right" href="inbox.html" data-transition="slide-in">
+                <span class="media-object icon icon-home pull-left"></span>
+                <div class="media-body">My account</div>
+            </a>
+        </li>
+        <li class="table-view-cell media">
+            <a class="navigate-right" href="inbox.html" data-transition="slide-in">
+                <span class="media-object icon icon-info pull-left"></span>
+                <div class="media-body">My information</div>
+            </a>
+        </li>
+        <li class="table-view-cell media">
+            <a class="navigate-right" href="inbox.html" data-transition="slide-in">
+                <span class="media-object icon icon-compose pull-left"></span>
+                <div class="media-body">Compose</div>
+            </a>
+        </li>
+    </ul>
+    <h5 class="content-padded">Settings</h5>
+    <ul class="table-view">
+        <li class="table-view-cell media">
+            <a class="navigate-right" href="inbox.html" data-transition="slide-in">
+                <span class="media-object icon icon-person pull-left"></span>
+                <div class="media-body">Logout</div>
+            </a>
+        </li>
+    </ul>
 </nav>
 
 <div class="content shifter-page">
@@ -213,22 +239,6 @@
         <a href="#myModalexample"><button class="btn btn-negative btn-block">Close modal</button></a>
     </div>
 </div>
-<!-- popover -->
-<div id="popover" class="popover">
-    <header class="bar bar-nav">
-        <h1 class="title">Popover title</h1>
-    </header>
-    <ul class="table-view">
-        <li class="table-view-cell">Item1</li>
-        <li class="table-view-cell">Item2</li>
-        <li class="table-view-cell">Item3</li>
-        <li class="table-view-cell">Item4</li>
-        <li class="table-view-cell">Item5</li>
-        <li class="table-view-cell">Item6</li>
-        <li class="table-view-cell">Item7</li>
-        <li class="table-view-cell">Item8</li>
-    </ul>
-</div>
 <!-- Compose modal -->
 <div id="composeModal" class="modal">
     <header class="bar bar-nav">
@@ -242,7 +252,7 @@
     </header>
 
     <div class="content">
-        <h5 class="content-padded">Send an email</h5>
+        <h5 class="content-padded">Compose</h5>
         <form class="input-group">
             <input type="text" placeholder="To:">
             <input type="email" placeholder="From:">

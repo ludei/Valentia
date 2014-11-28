@@ -869,8 +869,8 @@ textarea,
   border-radius: 200px 200px 200px 200px;
   -moz-border-radius: 200px 200px 200px 200px;
   -webkit-border-radius: 200px 200px 200px 200px;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin-left: 10%;
+  margin-top: 25px;
   background: #fff;
   padding: 2px;
   float: left;
@@ -884,8 +884,8 @@ textarea,
 
 .profile .profile-autor {
   float: left;
-  margin-top: 25px;
-  margin-left: 3px;
+  margin-top: 30px;
+  margin-left: 5px;
 }
 
 .profile .profile-autor h1, .profile .profile-autor h2, .profile .profile-autor p {
