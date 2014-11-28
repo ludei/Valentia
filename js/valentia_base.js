@@ -1,16 +1,17 @@
-Cocoon.define("Cocoon.Base" , function(extension){
+Valentia.define("Valentia.Base" , function(extension){
 
-    function CocoonInitComponents(){
+    function ValentiaInitComponents(){
         /**
          * Initialize CocoonJS Components
          */
         $(".tabbed").tabber();
+        $.shifter();
     }
 
-    CocoonInitComponents();
+    ValentiaInitComponents();
 
     window.addEventListener("push", function(){
-        CocoonInitComponents();
+        ValentiaInitComponents();
     });
 
     return extension;

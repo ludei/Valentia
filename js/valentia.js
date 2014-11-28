@@ -1,34 +1,26 @@
 /**
  * @fileOverview
- * The "Cocoon" object holds all the CocoonJS Extensions and other stuff needed for the CocoonJS environment.
+ *
  */
 (function () {
 
     /**
-     * The "Cocoon" object holds all the CocoonJS Extensions and other stuff needed for the CocoonJS environment.
-     * @namespace Cocoon
+     *
      */
-    Cocoon = window.Cocoon ? window.Cocoon : {};
+    Valentia = window.Valentia ? window.Valentia : {};
 
     /**
-     * This function is used to create extensions in the global namespace of the "Cocoon" object.
-     * @memberOf Cocoon
+     * This function is used to create extensions in the global namespace of the "Valentia" object.
+     * @memberOf Valentia
      * @private
      * @static
-     * @param {string} namespace The extensions namespace, ex: Cocoon.App.Settings.
-     * @param {object} callback The callback which holds the declaration of the new extension.
      * @example
-     * Cocoon.define("Cocoon.namespace" , function(extension){
-    * "use strict";
-    *
-    * return extension;
-    * });
      */
-    Cocoon.define = function(extName, ext){
+    Valentia.define = function(extName, ext){
 
-        var namespace = (extName.substring(0,7) == "Cocoon.") ? extName.substr(7) : extName;
+        var namespace = (extName.substring(0,9) == "Valentia.") ? extName.substr(9) : extName;
 
-        var base    = window.Cocoon;
+        var base    = window.Valentia;
         var parts  = namespace.split(".");
         var object = base;
 
@@ -44,36 +36,14 @@
     }
 })();
 
-Cocoon.define("Cocoon.Signal" , function(extension){
+Valentia.define("Valentia.Signal" , function(extension){
     "use strict";
 
-    /**
-     * This namespace is used to create an Event Emitter/Dispatcher that works together.
-     * with the Cocoon.EventHandler.
-     * @namespace Cocoon.Signal
-     * @private
-     */
-
-    /**
-     * This constructor creates a new Signal that holds and emits different events that are specified inside each extension.
-     * @memberof Cocoon.Signal
-     * @private
-     * @constructs createSignal
-     */
     extension.createSignal = function(){
-        /** @lends Cocoon.Signal.prototype */
+
         this.handle = null;
         this.signals = {};
 
-        /**
-         * Registers a new Signal.
-         * @param {string} namespace The name of the signal which will be emitted.
-         * @param {object} handle The Cocoon.EventHandler that will handle the signals.
-         * @function register
-         * @private
-         * @example
-         * signal.register("banner.ready", new Cocoon.EventHandler);
-         */
         this.register = function(namespace, handle){
 
             if( (!namespace) && (!handle)) throw new Error("Can't create signal " + (namespace || ""));
@@ -97,16 +67,7 @@ Cocoon.define("Cocoon.Signal" , function(extension){
             return false;
         },
 
-        /**
-         * Exposes the already defined signals, and can be use to atach a callback to a Cocoon.EventHandler event.
-         * @param {string} signal The name of the signal which will be emitted.
-         * @param {object} callback The Cocoon.EventHandler that will handle the signals.
-         * @param {object} params Optional parameters, example { once : true }
-         * @function expose
-         * @private
-         * @example
-         * Cocoon.namespace.on("event",function(){});
-         */
+
             this.expose = function(){
                 return function(signal, callback, params){
                     var once = false;

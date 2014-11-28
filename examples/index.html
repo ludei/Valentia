@@ -24,13 +24,16 @@
     </style>
 </head>
 
-<body>
+<body class="shifter shifter-left">
 <header class="bar bar-nav">
+    <button class="btn btn-link btn-nav pull-left shifter-handle">
+        <span class="icon icon-bars"></span>
+    </button>
     <a class="icon icon-refresh pull-right"></a>
-    <a href="#popover">
+    <a href="#peopover">
         <h1 class="title">
-            CocoonJS Launcher
-            <span class="icon icon-caret"></span>
+            Valentia
+            <!-- <span class="icon icon-caret"></span>-->
         </h1>
     </a>
 </header>
@@ -58,25 +61,48 @@
     </a>
 </div>
 
-<div class="content">
-    <!-- CocoonJS Component: Tabs -->
-    <div class="tabbed">
-        <menu class="tabber-menu">
-            <a href="#tab-1" class="tabber-handle">Tab 1</a>
-            <a href="#tab-2" class="tabber-handle">Tab 2</a>
-            <a href="#tab-3" class="tabber-handle">Tab 3</a>
-        </menu>
-        <div class="tabber-tab" id="tab-1">
-            Content...
-        </div>
-        <div class="tabber-tab" id="tab-2">
-            Content...
-        </div>
-        <div class="tabber-tab" id="tab-3">
-            Content...
-        </div>
-    </div>
+<!-- Navigation system -->
+<nav class="shifter-navigation">
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+    <a href="" class="">Valentia</a>
+</nav>
 
+<div class="content shifter-page">
+
+    <h5 class="content-padded">List example</h5>
     <ul class="table-view">
         <li class="table-view-cell media">
             <a class="navigate-right" href="inbox.html" data-transition="slide-in">
@@ -132,6 +158,28 @@
             </div>
         </li>
     </ul>
+    <!-- CocoonJS Component: Tabs -->
+    <h5 class="content-padded">Tabbed content</h5>
+    <div class="tabbed">
+        <menu class="tabber-menu">
+            <a href="#tab-1" class="tabber-handle">Bilbao</a>
+            <a href="#tab-2" class="tabber-handle">San Sebastian</a>
+            <a href="#tab-3" class="tabber-handle">Valentia</a>
+        </menu>
+        <div class="tabber-tab" id="tab-1">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </div>
+        <div class="tabber-tab" id="tab-2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Donec a diam suscipit quam rhoncus malesuada cursus a magna.
+            Aliquam suscipit facilisis gravida. In hac habitasse platea dictumst.
+            In hac habitasse platea dictumst.
+        </div>
+        <div class="tabber-tab" id="tab-3">
+            Content...
+        </div>
+    </div>
+
     <!-- Buttons -->
     <h5 class="content-padded">Buttons</h5>
     <div class="content-padded">
@@ -209,6 +257,10 @@
 <!-- /.modal -->
 <!-- Include valentia base -->
 <script src="../dist/js/valentia.min.js"></script>
+<script>
+    Valentia.Cookie.set("test", "works");
+    console.log(Valentia.Cookie.get("test"));
+</script>
 </body>
 
 </html>

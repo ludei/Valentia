@@ -970,35 +970,27 @@
 
 /**
  * @fileOverview
- * The "Cocoon" object holds all the CocoonJS Extensions and other stuff needed for the CocoonJS environment.
+ *
  */
 (function () {
 
     /**
-     * The "Cocoon" object holds all the CocoonJS Extensions and other stuff needed for the CocoonJS environment.
-     * @namespace Cocoon
+     *
      */
-    Cocoon = window.Cocoon ? window.Cocoon : {};
+    Valentia = window.Valentia ? window.Valentia : {};
 
     /**
-     * This function is used to create extensions in the global namespace of the "Cocoon" object.
-     * @memberOf Cocoon
+     * This function is used to create extensions in the global namespace of the "Valentia" object.
+     * @memberOf Valentia
      * @private
      * @static
-     * @param {string} namespace The extensions namespace, ex: Cocoon.App.Settings.
-     * @param {object} callback The callback which holds the declaration of the new extension.
      * @example
-     * Cocoon.define("Cocoon.namespace" , function(extension){
-    * "use strict";
-    *
-    * return extension;
-    * });
      */
-    Cocoon.define = function(extName, ext){
+    Valentia.define = function(extName, ext){
 
-        var namespace = (extName.substring(0,7) == "Cocoon.") ? extName.substr(7) : extName;
+        var namespace = (extName.substring(0,9) == "Valentia.") ? extName.substr(9) : extName;
 
-        var base    = window.Cocoon;
+        var base    = window.Valentia;
         var parts  = namespace.split(".");
         var object = base;
 
@@ -1014,36 +1006,14 @@
     }
 })();
 
-Cocoon.define("Cocoon.Signal" , function(extension){
+Valentia.define("Valentia.Signal" , function(extension){
     "use strict";
 
-    /**
-     * This namespace is used to create an Event Emitter/Dispatcher that works together.
-     * with the Cocoon.EventHandler.
-     * @namespace Cocoon.Signal
-     * @private
-     */
-
-    /**
-     * This constructor creates a new Signal that holds and emits different events that are specified inside each extension.
-     * @memberof Cocoon.Signal
-     * @private
-     * @constructs createSignal
-     */
     extension.createSignal = function(){
-        /** @lends Cocoon.Signal.prototype */
+
         this.handle = null;
         this.signals = {};
 
-        /**
-         * Registers a new Signal.
-         * @param {string} namespace The name of the signal which will be emitted.
-         * @param {object} handle The Cocoon.EventHandler that will handle the signals.
-         * @function register
-         * @private
-         * @example
-         * signal.register("banner.ready", new Cocoon.EventHandler);
-         */
         this.register = function(namespace, handle){
 
             if( (!namespace) && (!handle)) throw new Error("Can't create signal " + (namespace || ""));
@@ -1067,16 +1037,7 @@ Cocoon.define("Cocoon.Signal" , function(extension){
             return false;
         },
 
-        /**
-         * Exposes the already defined signals, and can be use to atach a callback to a Cocoon.EventHandler event.
-         * @param {string} signal The name of the signal which will be emitted.
-         * @param {object} callback The Cocoon.EventHandler that will handle the signals.
-         * @param {object} params Optional parameters, example { once : true }
-         * @function expose
-         * @private
-         * @example
-         * Cocoon.namespace.on("event",function(){});
-         */
+
             this.expose = function(){
                 return function(signal, callback, params){
                     var once = false;
@@ -1375,19 +1336,370 @@ Cocoon.define("Cocoon.Signal" , function(extension){
         }
     };
 })(jQuery, this);
-Cocoon.define("Cocoon.Base" , function(extension){
+;(function ($, window) {
+    "use strict";
 
-    function CocoonInitComponents(){
+    /**
+     * @options
+     * @param domain [string] "Cookie domain"
+     * @param expires [int] <604800000> "Time until cookie expires"
+     * @param path [string] "Cookie path"
+     */
+    var options = {
+        domain: null,
+        expires: (7 * 24 * 60 * 60 * 1000), // 604800000 = 7 days
+        path: null
+    };
+
+    /**
+     * @method
+     * @name create
+     * @description Creates a cookie
+     * @param key [string] "Cookie key"
+     * @param value [string] "Cookie value"
+     * @param opts [object] "Options object"
+     * @example $.macaroon(key, value, options);
+     */
+    function _create(key, value, opts) {
+        var date = new Date();
+
+        opts = $.extend({}, options, opts);
+        if (opts.expires || typeof opts.expires === "number") {
+            date.setTime(date.getTime() + opts.expires);
+        }
+
+        var expires = (opts.expires || typeof opts.expires === "number") ? "; expires=" + date.toGMTString() : "",
+            path = (opts.path) ? "; path=" + opts.path : "",
+            domain = (opts.domain) ? "; domain=" + opts.domain : "";
+
+        document.cookie = key + "=" + value + expires + domain + path;
+    }
+
+    /**
+     * @method
+     * @name read
+     * @description Returns a cookie's value, or null
+     * @param key [string] "Cookie key"
+     * @return [string | null] "Cookie's value, or null"
+     * @example var value = $.macaroon(key);
+     */
+    function _read(key) {
+        var keyString = key + "=",
+            cookies = document.cookie.split(';');
+
+        for(var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i];
+            while (cookie.charAt(0) === ' ') {
+                cookie = cookie.substring(1, cookie.length);
+            }
+            if (cookie.indexOf(keyString) === 0) {
+                return cookie.substring(keyString.length, cookie.length);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @method
+     * @name erase
+     * @description Deletes a cookie
+     * @param key [string] "Cookie key"
+     * @example $.macaroon(key, null);
+     */
+    function _erase(key) {
+        _create(key, "FALSE", { expires: -(7 * 24 * 60 * 60 * 1000) });
+    }
+
+    /**
+     * @method
+     * @name defaults
+     * @description Sets default plugin options
+     * @param opts [object] <{}> "Options object"
+     * @example $.macaroon(opts);
+     */
+
+    $.macaroon = function(key, value, opts) {
+        // Set defaults
+        if (typeof key === "object") {
+            options = $.extend(options, key);
+            return null;
+        } else {
+            opts = $.extend({}, options, opts);
+        }
+
+        // Delegate intent
+        if (typeof key !== "undefined") {
+            if (typeof value !== "undefined") {
+                if (value === null) {
+                    _erase(key);
+                } else {
+                    _create(key, value, opts);
+                }
+            } else {
+                return _read(key);
+            }
+        }
+    };
+})(jQuery, window);
+
+Valentia.define("Valentia.Cookie" , function(extension){
+
+    extension.set = function(key, value, ops){
+        return jQuery.macaroon(key, value, ops);
+    };
+
+    extension.get = function(key){
+        return jQuery.macaroon(key);
+    };
+
+    extension.delete = function(key){
+        return jQuery.macaroon(key, null);
+    };
+
+    return extension;
+
+});
+/*
+ * Shifter v3.1.2 - 2014-10-28
+ * A jQuery plugin for simple slide-out mobile navigation. Part of the Formstone Library.
+ * http://formstone.it/shifter/
+ *
+ * Copyright 2014 Ben Plum; MIT Licensed
+ */
+
+;(function ($, window) {
+    "use strict";
+
+    var namespace = "shifter",
+        initialized = false,
+        hasTouched = false,
+        data = {},
+        classes = {
+            handle: "shifter-handle",
+            page: "shifter-page",
+            header: "shifter-header",
+            navigation: "shifter-navigation",
+            isEnabled: "shifter-enabled",
+            isOpen: "shifter-open"
+        },
+        events = {
+            click: "touchstart." + namespace + " click." + namespace
+        };
+
+    /**
+     * @options
+     * @param maxWidth [string] <'980px'> "Width at which to auto-disable plugin"
+     */
+    var options = {
+        maxWidth: "980px"
+    };
+
+    var pub = {
+
+        /**
+         * @method
+         * @name close
+         * @description Closes navigation if open
+         * @example $.shifter("close");
+         */
+        close: function() {
+            if (initialized) {
+                data.$html.removeClass(classes.isOpen);
+                data.$body.removeClass(classes.isOpen);
+                data.$shifts.off( classify(namespace) );
+                // Close mobile keyboard if open
+                data.$nav.find("input").trigger("blur");
+            }
+        },
+
+        /**
+         * @method
+         * @name enable
+         * @description Enables navigation system
+         * @example $.shifter("enable");
+         */
+        enable: function() {
+            if (initialized) {
+                data.$body.addClass(classes.isEnabled);
+            }
+        },
+
+        /**
+         * @method
+         * @name destroy
+         * @description Removes instance of plugin
+         * @example $.shifter("destroy");
+         */
+        destroy: function() {
+            if (initialized) {
+                data.$html.removeClass(classes.isOpen);
+                data.$body.removeClass( [classes.isEnabled, classes.isOpen].join(" ") )
+                    .off(events.click);
+
+                // Navtive MQ Support
+                if (window.matchMedia !== undefined) {
+                    data.mediaQuery.removeListener(onRespond);
+                }
+
+                data = {};
+                initialized = false;
+            }
+        },
+
+        /**
+         * @method
+         * @name disable
+         * @description Disables navigation system
+         * @example $.shifter("disable");
+         */
+        disable: function() {
+            if (initialized) {
+                pub.close();
+                data.$body.removeClass(classes.isEnabled);
+            }
+        },
+
+        /**
+         * @method
+         * @name open
+         * @description Opens navigation if closed
+         * @example $.shifter("open");
+         */
+        open: function() {
+            if (initialized) {
+                data.$html.addClass(classes.isOpen);
+                data.$body.addClass(classes.isOpen);
+                data.$shifts.one(events.click, onClick);
+            }
+        }
+    };
+
+    /**
+     * @method private
+     * @name init
+     * @description Initializes plugin
+     * @param opts [object] "Initialization options"
+     */
+    function init(opts) {
+        if (!initialized) {
+            data = $.extend({}, options, opts || {});
+
+            data.$html = $("html");
+            data.$body = $("body");
+            data.$shifts = $( [classify(classes.page), classify(classes.header)].join(", ") );
+            data.$nav = $( classify(classes.navigation) );
+
+            if (data.$shifts.length > 0 && data.$nav.length > 0) {
+                initialized = true;
+
+                data.$body.on(events.click, classify(classes.handle), onClick);
+
+                // Navtive MQ Support
+                if (window.matchMedia !== undefined) {
+                    data.mediaQuery = window.matchMedia("(max-width:" + (data.maxWidth === Infinity ? "100000px" : data.maxWidth) + ")");
+                    data.mediaQuery.addListener(onRespond);
+                    onRespond();
+                }
+            }
+        }
+    }
+
+    /**
+     * @method private
+     * @name onRespond
+     * @description Handles media query match change
+     */
+    function onRespond() {
+        if (data.mediaQuery.matches) {
+            pub.enable();
+        } else {
+            pub.disable();
+        }
+    }
+
+    /**
+     * @method private
+     * @name onClick
+     * @description Determines proper click / touch action
+     * @param e [object] "Event data"
+     */
+    function onClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (!hasTouched) {
+            if (data.$body.hasClass(classes.isOpen)) {
+                pub.close();
+            } else {
+                pub.open();
+            }
+        }
+
+        if (e.type === "touchstart") {
+            hasTouched = true;
+
+            setTimeout(resetTouch, 500);
+        }
+    }
+
+    /**
+     * @method private
+     * @name resetTouch
+     * @description Resets touch state
+     */
+    function resetTouch() {
+        hasTouched = false;
+    }
+
+    /**
+     * @method private
+     * @name classify
+     * @description Create class selector from text
+     * @param text [string] "Text to convert"
+     * @return [string] "New class name"
+     */
+    function classify(text) {
+        return "." + text;
+    }
+
+    $[namespace] = function(method) {
+        if (pub[method]) {
+            return pub[method].apply(this, Array.prototype.slice.call(arguments, 1));
+        } else if (typeof method === 'object' || !method) {
+            return init.apply(this, arguments);
+        }
+        return this;
+    };
+})(jQuery, window);
+
+Valentia.define("Valentia.Nav" , function(extension){
+
+    extension.open = function(){
+        $.shifter("open");
+    };
+
+    extension.close = function(){
+        $.shifter("close");
+    };
+
+    return extension;
+
+});
+Valentia.define("Valentia.Base" , function(extension){
+
+    function ValentiaInitComponents(){
         /**
          * Initialize CocoonJS Components
          */
         $(".tabbed").tabber();
+        $.shifter();
     }
 
-    CocoonInitComponents();
+    ValentiaInitComponents();
 
     window.addEventListener("push", function(){
-        CocoonInitComponents();
+        ValentiaInitComponents();
     });
 
     return extension;

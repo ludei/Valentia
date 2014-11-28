@@ -545,8 +545,10 @@ textarea,
 .tabber .tabber-handle {
   display: block;
   float: left;
-  color: #999;
+  padding: 15px;
+  color: #b6b6b6;
   cursor: pointer;
+  background-color: #fff;
   -webkit-transition: none;
      -moz-transition: none;
       -ms-transition: none;
@@ -554,8 +556,12 @@ textarea,
           transition: none;
 }
 
+.tabber {
+  font-family: "NexaLight";
+}
+
 .tabber .tabber-handle.active {
-  color: #333;
+  color: #9d9d9d;
 }
 
 .tabber .tabber-handle.mobile {
@@ -565,6 +571,7 @@ textarea,
 
 .tabber .tabber-tab {
   display: none;
+  margin: 10px;
   clear: both;
 }
 
@@ -597,6 +604,7 @@ textarea,
 /* Mobile */
 .tabber.mobile .tabber-handle {
   display: none;
+  font-family: "NexaBold";
 }
 
 .tabber.mobile .tabber-handle.mobile {
@@ -607,4 +615,169 @@ textarea,
 .tabber.vertical.mobile .tabber-tab {
   float: none;
   width: 100%;
+}
+
+:focus {
+  outline: -webkit-focus-ring-color 0;
+}
+
+/*
+ * Shifter v3.1.2 - 2014-10-28
+ * A jQuery plugin for simple slide-out mobile navigation. Part of the Formstone Library.
+ * http://formstone.it/shifter/
+ *
+ * Copyright 2014 Ben Plum; MIT Licensed
+ */
+.shifter-open {
+  overflow: hidden;
+}
+
+.shifter-open .shifter-page *,
+.shifter-open .shifter-header * {
+  pointer-events: none;
+}
+
+.shifter-navigation {
+  display: none;
+  padding-top: 44px;
+  padding-bottom: 49px;
+  color: #b6b6b6;
+  opacity: 0;
+}
+
+.shifter-navigation a {
+  display: block;
+  color: #b6b6b6;
+}
+
+.shifter-handle {
+  display: none;
+}
+
+.shifter-enabled .shifter-page {
+  z-index: 1;
+  display: block;
+  min-height: 100%;
+  background: #fff;
+  box-shadow: 2px 0 2px rgba(0, 0, 0, .15);
+}
+
+.shifter-enabled.shifter-left .shifter-page {
+  box-shadow: -2px 0 2px rgba(0, 0, 0, .15);
+}
+
+.shifter-enabled .shifter-navigation {
+  position: fixed;
+  top: 0;
+  z-index: 0;
+  display: block;
+  width: 270px;
+  height: 100%;
+  overflow: auto;
+  pointer-events: none;
+  background: #fff;
+  -webkit-transition: opacity .001s linear .2s, -webkit-transform .2s ease;
+          transition: opacity .001s linear .2s, transform .2s ease;
+}
+
+.shifter-enabled .shifter-page,
+.shifter-enabled .shifter-header,
+.shifter-enabled .shifter-navigation {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.shifter-enabled .shifter-page,
+.shifter-enabled .shifter-header {
+  -webkit-transition: -webkit-transform .2s ease;
+          transition:         transform .2s ease;
+  -webkit-transform: translate3D(0, 0, 0);
+      -ms-transform: translate3D(0, 0, 0);
+          transform: translate3D(0, 0, 0);
+}
+
+.shifter-enabled .shifter-handle {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.shifter-enabled .shifter-handle:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 20px;
+  height: 3px;
+  margin: auto;
+  content: '';
+}
+
+.shifter-enabled .shifter-navigation {
+  right: 0;
+  -webkit-transform: translate3D(0, 0, 0);
+      -ms-transform: translate3D(0, 0, 0);
+          transform: translate3D(0, 0, 0);
+}
+
+.shifter-open .shifter-page,
+.shifter-open .shifter-header {
+  -webkit-transform: translate3D(-270px, 0, 0);
+      -ms-transform: translate3D(-270px, 0, 0);
+          transform: translate3D(-270px, 0, 0);
+}
+
+.shifter-enabled.shifter-left .shifter-navigation {
+  left: 0;
+  -webkit-transform: translate3D(0, 0, 0);
+      -ms-transform: translate3D(0, 0, 0);
+          transform: translate3D(0, 0, 0);
+}
+
+.shifter-enabled.shifter-left.shifter-open .shifter-page,
+.shifter-enabled.shifter-left.shifter-open .shifter-header {
+  -webkit-transform: translate3D(270px, 0, 0);
+      -ms-transform: translate3D(270px, 0, 0);
+          transform: translate3D(270px, 0, 0);
+}
+
+.shifter-open .shifter-navigation {
+  pointer-events: all;
+  opacity: 1;
+  -webkit-transition: opacity .001s linear 0s, -webkit-transform .2s ease;
+          transition: opacity .001s linear 0s, transform .2s ease;
+  -webkit-transform: translate3D(0, 0, 0);
+      -ms-transform: translate3D(0, 0, 0);
+          transform: translate3D(0, 0, 0);
+}
+
+.no-csstransforms3d .shifter-enabled.shifter-navigation {
+  right: -270px;
+}
+
+.no-csstransforms3d .shifter-enabled.shifter-left .shifter-navigation {
+  left: -270px;
+}
+
+.no-csstransforms3d .shifter-enabled.shifter-open .shifter-page {
+  left: -270px;
+}
+
+.no-csstransforms3d .shifter-enabled.shifter-open .shifter-navigation {
+  right: 0;
+}
+
+.no-csstransforms3d .shifter-enabled.shifter-left.shifter-open .shifter-page {
+  right: -270px;
+  left: auto;
+}
+
+.no-csstransforms3d .shifter-enabled.shifter-left.shifter-open .shifter-navigation {
+  left: 0;
 }

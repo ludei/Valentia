@@ -57,9 +57,11 @@ module.exports = function (grunt) {
           'js/sliders.js',
           'js/toggles.js',
           'js/jquery-2.1.1.min.js',
-          'js/cocoon.js',
-          'js/cocoon_tabber.js',
-          'js/cocoon_base.js'
+          'js/valentia.js',
+          'js/valentia_tabber.js',
+          'js/valentia_cookie.js',
+          'js/valentia_nav.js',
+          'js/valentia_base.js'
         ],
         dest: '<%= meta.distPath %>js/<%= pkg.name %>.js'
       }
