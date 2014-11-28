@@ -781,3 +781,87 @@ textarea,
 .no-csstransforms3d .shifter-enabled.shifter-left.shifter-open .shifter-navigation {
   left: 0;
 }
+
+.wallpaper,
+.wallpaper .wallpaper-container,
+.wallpaper .wallpaper-media {
+  -webkit-transition: none !important;
+          transition: none !important;
+}
+
+.wallpaper {
+  position: relative;
+  overflow: hidden;
+}
+
+.wallpaper .wallpaper-container {
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.wallpaper .wallpaper-media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.wallpaper .wallpaper-media.animated {
+  -webkit-transition: opacity .5s linear !important;
+          transition: opacity .5s linear !important;
+}
+
+.wallpaper .wallpaper-media img,
+.wallpaper .wallpaper-media video,
+.wallpaper .wallpaper-media iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.wallpaper .wallpaper-embed.ready:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  content: '';
+}
+
+.wallpaper .wallpaper-embed.ready iframe {
+  /* pointer-events: none; - safari doesn't like this :/ */
+  z-index: 0;
+}
+
+.wallpaper .wallpaper-media.native {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.wallpaper .wallpaper-media.native img {
+  display: none;
+}
+
+.wallpaper .wallpaper-media.fixed {
+  width: 100%;
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.wallpaper .wallpaper-media.fixed img {
+  display: none;
+}
+
+.profile {
+  display: block;
+  min-width: 100px;
+  min-height: 100px;
+}
