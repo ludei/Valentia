@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Mail</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../dist/css/valentia.min.css">
+    <link rel="stylesheet" href="../dist/css/valentia-theme-cocoonjs.css">
+
+    <script src="//localhost:35729/livereload.js"></script>
+    <style>
+        .updated-text {
+            position: absolute;
+            color: #fff;
+            left: 0;
+            right: 0;
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<header class="bar bar-nav">
+    <a class="icon icon-refresh pull-right"></a>
+    <a href="#popover">
+        <h1 class="title">
+            CocoonJS Launcher
+            <span class="icon icon-caret"></span>
+        </h1>
+    </a>
+</header>
+
+<div class="bar bar-tab">
+    <a class="tab-item active" href="#">
+        <span class="icon icon-home"></span>
+        <span class="tab-label">Home</span>
+    </a>
+    <a class="tab-item" href="#composeModal">
+        <span class="icon icon-person"></span>
+        <span class="tab-label">Profile</span>
+    </a>
+    <a class="tab-item" href="#">
+        <span class="icon icon-star-filled"></span>
+        <span class="tab-label">Favorites</span>
+    </a>
+    <a class="tab-item" href="#">
+        <span class="icon icon-search"></span>
+        <span class="tab-label">Search</span>
+    </a>
+    <a class="tab-item" href="#">
+        <span class="icon icon-gear"></span>
+        <span class="tab-label">Settings</span>
+    </a>
+</div>
+
+<div class="content">
+    <!-- CocoonJS Component: Tabs -->
+    <div class="tabbed">
+        <menu class="tabber-menu">
+            <a href="#tab-1" class="tabber-handle">Tab 1</a>
+            <a href="#tab-2" class="tabber-handle">Tab 2</a>
+            <a href="#tab-3" class="tabber-handle">Tab 3</a>
+        </menu>
+        <div class="tabber-tab" id="tab-1">
+            Content...
+        </div>
+        <div class="tabber-tab" id="tab-2">
+            Content...
+        </div>
+        <div class="tabber-tab" id="tab-3">
+            Content...
+        </div>
+    </div>
+
+    <ul class="table-view">
+        <li class="table-view-cell media">
+            <a class="navigate-right" href="inbox.html" data-transition="slide-in">
+                <span class="media-object icon icon-pages pull-left"></span>
+                <div class="media-body">
+                    All inboxes
+                </div>
+            </a>
+        </li>
+        <li class="table-view-cell media">
+            <a class="navigate-right" href="inbox.html" data-transition="slide-in">
+                <span class="media-object icon icon-person pull-left"></span>
+                <div class="media-body">
+                    Personal email
+                </div>
+            </a>
+        </li>
+        <li class="table-view-cell media">
+            <a class="navigate-right" href="inbox.html" data-transition="slide-in">
+                <span class="media-object icon icon-star-filled pull-left"></span>
+                <div class="media-body">
+                    Starred
+                </div>
+            </a>
+        </li>
+        <li class="table-view-cell media">
+            <a class="navigate-right" href="inbox.html" data-transition="slide-in">
+                <span class="media-object icon icon-trash pull-left"></span>
+                <div class="media-body">
+                    Trash
+                </div>
+            </a>
+        </li>
+        <li class="table-view-cell media">
+            <a class="navigate-right">
+                <img class="media-object pull-left" src="http://placehold.it/42x42">
+                <div class="media-body">
+                    Item 1
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet.</p>
+                </div>
+            </a>
+        </li>
+        <li class="table-view-cell">
+            Item 1
+            <div class="toggle">
+                <div class="toggle-handle"></div>
+            </div>
+        </li>
+        <li class="table-view-cell">
+            Item 2
+            <div class="toggle active">
+                <div class="toggle-handle"></div>
+            </div>
+        </li>
+    </ul>
+    <!-- Buttons -->
+    <h5 class="content-padded">Buttons</h5>
+    <div class="content-padded">
+        <button class="btn">Badge button <span class="badge">1</span>
+        </button>
+        <button class="btn btn-primary">Badge button <span class="badge badge-primary">1</span>
+        </button>
+        <button class="btn btn-positive">Badge button <span class="badge badge-positive">1</span>
+        </button>
+        <button class="btn btn-negative">Badge button <span class="badge badge-negative">1</span>
+        </button>
+
+        <h5>Buttons</h5>
+        <button class="btn btn-block">Block button</button>
+        <button class="btn btn-primary btn-block">Block button</button>
+        <button class="btn btn-positive btn-block">Block button</button>
+        <button class="btn btn-negative btn-block">Block button</button>
+
+        <button class="btn btn-block btn-outlined">Block button</button>
+        <button class="btn btn-primary btn-block btn-outlined">Block button</button>
+        <button class="btn btn-positive btn-block btn-outlined">Block button</button>
+        <button class="btn btn-negative btn-block btn-outlined">Block button</button>
+    </div>
+    <!-- Footer list -->
+    <h5 class="content-padded">Other accounts</h5>
+    <ul class="table-view">
+        <li class="table-view-cell media">
+            <a class="navigate-right" href="inbox.html" data-transition="slide-in">
+                <span class="media-object icon icon-more pull-left"></span>
+                <div class="media-body">
+                    Misc
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- /.content -->
+<!-- popover -->
+<div id="popover" class="popover">
+    <header class="bar bar-nav">
+        <h1 class="title">Popover title</h1>
+    </header>
+    <ul class="table-view">
+        <li class="table-view-cell">Item1</li>
+        <li class="table-view-cell">Item2</li>
+        <li class="table-view-cell">Item3</li>
+        <li class="table-view-cell">Item4</li>
+        <li class="table-view-cell">Item5</li>
+        <li class="table-view-cell">Item6</li>
+        <li class="table-view-cell">Item7</li>
+        <li class="table-view-cell">Item8</li>
+    </ul>
+</div>
+<!-- Compose modal -->
+<div id="composeModal" class="modal">
+    <header class="bar bar-nav">
+        <a class="btn btn-link pull-right" href="#composeModal">
+            <strong>Send</strong>
+        </a>
+        <a class="btn btn-link pull-left" href="#composeModal">
+            Cancel
+        </a>
+        <h1 class="title">New message</h1>
+    </header>
+
+    <div class="content">
+        <form class="input-group">
+            <input type="text" placeholder="To:">
+            <input type="email" placeholder="From:">
+            <input type="text" placeholder="Subject:">
+            <textarea rows="20"></textarea>
+        </form>
+    </div>
+</div>
+<!-- /.modal -->
+<!-- Include valentia base -->
+<script src="../dist/js/valentia.min.js"></script>
+</body>
+
+</html>

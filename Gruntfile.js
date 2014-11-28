@@ -55,7 +55,11 @@ module.exports = function (grunt) {
           'js/push.js',
           'js/segmented-controllers.js',
           'js/sliders.js',
-          'js/toggles.js'
+          'js/toggles.js',
+          'js/jquery-2.1.1.min.js',
+          'js/cocoon.js',
+          'js/cocoon_tabber.js',
+          'js/cocoon_base.js'
         ],
         dest: '<%= meta.distPath %>js/<%= pkg.name %>.js'
       }
@@ -73,6 +77,7 @@ module.exports = function (grunt) {
           '<%= meta.distPath %>css/<%= pkg.name %>.css': 'sass/ratchet.scss',
           '<%= meta.distPath %>css/<%= pkg.name %>-theme-ios.css': 'sass/theme-ios.scss',
           '<%= meta.distPath %>css/<%= pkg.name %>-theme-android.css': 'sass/theme-android.scss',
+          '<%= meta.distPath %>css/<%= pkg.name %>-theme-cocoonjs.css': 'sass/theme-cocoonjs.scss',
           '<%= meta.docsAssetsPath %>css/docs.css': 'sass/docs.scss'
         }
       }
@@ -86,7 +91,8 @@ module.exports = function (grunt) {
         files: {
           '<%= meta.distPath %>css/<%= pkg.name %>.css': '<%= meta.distPath %>css/<%= pkg.name %>.css',
           '<%= meta.distPath %>css/<%= pkg.name %>-theme-android.css': '<%= meta.distPath %>css/<%= pkg.name %>-theme-android.css',
-          '<%= meta.distPath %>css/<%= pkg.name %>-theme-ios.css': '<%= meta.distPath %>css/<%= pkg.name %>-theme-ios.css'
+          '<%= meta.distPath %>css/<%= pkg.name %>-theme-ios.css': '<%= meta.distPath %>css/<%= pkg.name %>-theme-ios.css',
+          '<%= meta.distPath %>css/<%= pkg.name %>-theme-cocoonjs.css': '<%= meta.distPath %>css/<%= pkg.name %>-theme-cocoonjs.css'
         }
       },
       docs: {
@@ -124,6 +130,7 @@ module.exports = function (grunt) {
       theme: {
         files: {
           '<%= meta.distPath %>css/<%= pkg.name %>-theme-ios.min.css': '<%= meta.distPath %>css/<%= pkg.name %>-theme-ios.css',
+          '<%= meta.distPath %>css/<%= pkg.name %>-theme-cocoonjs.min.css': '<%= meta.distPath %>css/<%= pkg.name %>-theme-cocoonjs.css',
           '<%= meta.distPath %>css/<%= pkg.name %>-theme-android.min.css': '<%= meta.distPath %>css/<%= pkg.name %>-theme-android.css'
         }
       },
@@ -161,7 +168,10 @@ module.exports = function (grunt) {
         files: [
           '<%= meta.srcPath %>**/*.scss'
         ],
-        tasks: ['sass']
+        tasks: ['sass'],
+      options: {
+          livereload: true
+      }
       }
     },
 
