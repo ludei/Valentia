@@ -8,24 +8,20 @@
  * =====================================================
  */
 
-@charset "UTF-8";
 @font-face {
   font-family: 'NexaRegular';
 
   src: url("../fonts/fontfabric_-_nexaregular-webfont.woff") format("woff"), url("../fonts/fontfabric_-_nexaregular-webfont.ttf") format("truetype");
-  /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 @font-face {
   font-family: 'NexaBold';
 
   src: url("../fonts/fontfabric_-_nexa-bold-webfont.woff") format("woff"), url("../fonts/fontfabric_-_nexa-bold-webfont.ttf") format("truetype");
-  /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 @font-face {
   font-family: 'NexaLight';
 
   src: url("../fonts/fontfabric_-_nexa-light-webfont.woff") format("woff"), url("../fonts/fontfabric_-_nexa-light-webfont.ttf") format("truetype");
-  /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 body {
   font-family: "NexaBold", Helvetica,sans-serif;
@@ -639,7 +635,7 @@ textarea,
 
 .shifter-navigation {
   display: none;
-  padding-top: 44px;
+  padding-top: 43px;
   padding-bottom: 49px;
   color: #b6b6b6;
   opacity: 0;
@@ -861,7 +857,60 @@ textarea,
 }
 
 .profile {
+  position: relative;
   display: block;
-  min-width: 100px;
-  min-height: 100px;
+  min-height: 6em;
+  box-sizing: border-box;
+}
+
+.profile .profile-pic {
+  float: left;
+  width: 18%;
+  padding: 2px;
+  margin-top: 25px;
+  margin-left: 10%;
+  background: #fff;
+          border-radius: 200px 200px 200px 200px;
+
+     -moz-border-radius: 200px 200px 200px 200px;
+  -webkit-border-radius: 200px 200px 200px 200px;
+}
+
+.profile .profile-info {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+.profile .profile-autor {
+  float: left;
+  margin-top: 30px;
+  margin-left: 5px;
+}
+
+.profile .profile-autor h1, .profile .profile-autor h2, .profile .profile-autor p {
+  padding: 0;
+  margin: 0;
+  font-size: 1em;
+  color: #fff;
+}
+
+.profile .profile-autor p {
+  font-size: .8em;
+  color: #52e1df;
+}
+
+.slider .slide-group .slide {
+  position: relative;
+}
+
+.slider .slide-group .slide-text {
+  position: absolute;
+  top: 45%;
+  left: 0;
+  width: 100%;
+  font-size: 24px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0, 0, 0, .5);
 }

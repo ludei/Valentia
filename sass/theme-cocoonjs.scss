@@ -12,18 +12,18 @@
 
 @font-face {
   font-family: 'NexaRegular';
-  src: url('../fonts/fontfabric_-_nexaregular-webfont.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-  url('../fonts/fontfabric_-_nexaregular-webfont.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+  src: url('../fonts/fontfabric_-_nexaregular-webfont.woff') format('woff'),
+  url('../fonts/fontfabric_-_nexaregular-webfont.ttf') format('truetype');
 }
 @font-face {
   font-family: 'NexaBold';
-  src: url('../fonts/fontfabric_-_nexa-bold-webfont.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-  url('../fonts/fontfabric_-_nexa-bold-webfont.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+  src: url('../fonts/fontfabric_-_nexa-bold-webfont.woff') format('woff'),
+  url('../fonts/fontfabric_-_nexa-bold-webfont.ttf') format('truetype');
 }
 @font-face {
   font-family: 'NexaLight';
-  src: url('../fonts/fontfabric_-_nexa-light-webfont.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-  url('../fonts/fontfabric_-_nexa-light-webfont.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+  src: url('../fonts/fontfabric_-_nexa-light-webfont.woff') format('woff'),
+  url('../fonts/fontfabric_-_nexa-light-webfont.ttf') format('truetype');
 }
 
 // Variables
@@ -382,6 +382,60 @@ p {
     border-bottom: 0;
     @include hairline(double, #c8c7cc, 0);  // Double (top and bottom) grey border with no offset.
   }
+}
+
+.table-view .media, .table-view .media-body{
+  
+}
+
+$lady-border-radius : 4px;
+
+.masonry { /* Masonry container */
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+    column-gap: 1em;
+}
+
+.masonry .item { /* Masonry bricks or child elements */
+    background-color: #eee;
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 100%;
+    border-radius: $lady-border-radius;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+    background: #fff;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: $lady-border-radius $lady-border-radius 0 0;
+    }
+
+    .box-section {
+      
+      border-bottom: 1px solid #e0e0e0;
+      font-family: "NexaRegular";
+
+      p {
+        margin: 0;
+        padding: 6px 14px 7px;
+        font-size: 13px;
+      }
+      span {
+        padding: 6px 14px 7px;
+        font-size: 11px;
+        font-weight:bold;
+        display:block;
+      }
+      span.bold {
+        font-weight:bold;
+      }
+    }
+
 }
 
 

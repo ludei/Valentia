@@ -8,21 +8,17 @@
  * =====================================================
  */
 
-@charset "UTF-8";
 @font-face {
   font-family: 'NexaRegular';
   src: url("../fonts/fontfabric_-_nexaregular-webfont.woff") format("woff"), url("../fonts/fontfabric_-_nexaregular-webfont.ttf") format("truetype");
-  /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 @font-face {
   font-family: 'NexaBold';
   src: url("../fonts/fontfabric_-_nexa-bold-webfont.woff") format("woff"), url("../fonts/fontfabric_-_nexa-bold-webfont.ttf") format("truetype");
-  /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 @font-face {
   font-family: 'NexaLight';
   src: url("../fonts/fontfabric_-_nexa-light-webfont.woff") format("woff"), url("../fonts/fontfabric_-_nexa-light-webfont.ttf") format("truetype");
-  /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 body {
   color: #b6b6b6;
@@ -279,6 +275,51 @@ p {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#c8c7cc' x='0' y='0' width='100%' height='0.5'/></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#c8c7cc' x='0' y='0' width='100%' height='0.5'/></svg>");
   background-position: 0 100%, 0 0;
   background-repeat: no-repeat;
+}
+
+.masonry {
+  /* Masonry container */
+  -moz-column-count: 2;
+  -webkit-column-count: 2;
+  column-count: 2;
+  -moz-column-gap: 1em;
+  -webkit-column-gap: 1em;
+  column-gap: 1em;
+}
+
+.masonry .item {
+  /* Masonry bricks or child elements */
+  background-color: #eee;
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+  background: #fff;
+}
+.masonry .item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px 4px 0 0;
+}
+.masonry .item .box-section {
+  border-bottom: 1px solid #e0e0e0;
+  font-family: "NexaRegular";
+}
+.masonry .item .box-section p {
+  margin: 0;
+  padding: 6px 14px 7px;
+  font-size: 13px;
+}
+.masonry .item .box-section span {
+  padding: 6px 14px 7px;
+  font-size: 11px;
+  font-weight: bold;
+  display: block;
+}
+.masonry .item .box-section span.bold {
+  font-weight: bold;
 }
 
 select,
