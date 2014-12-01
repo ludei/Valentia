@@ -389,11 +389,11 @@ p {
 }
 
 $lady-border-radius : 4px;
-
+$column-count : 3;
 .masonry { /* Masonry container */
-    -moz-column-count: 2;
-    -webkit-column-count: 2;
-    column-count: 2;
+    -moz-column-count: $column-count;
+    -webkit-column-count: $column-count;
+    column-count: $column-count;
     -moz-column-gap: 1em;
     -webkit-column-gap: 1em;
     column-gap: 1em;
@@ -419,7 +419,7 @@ $lady-border-radius : 4px;
       
       border-bottom: 1px solid #e0e0e0;
       font-family: "NexaRegular";
-
+      background-color: #fff;
       p {
         margin: 0;
         padding: 6px 14px 7px;

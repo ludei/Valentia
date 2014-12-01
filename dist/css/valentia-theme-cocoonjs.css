@@ -279,9 +279,9 @@ p {
 
 .masonry {
   /* Masonry container */
-  -moz-column-count: 2;
-  -webkit-column-count: 2;
-  column-count: 2;
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+  column-count: 3;
   -moz-column-gap: 1em;
   -webkit-column-gap: 1em;
   column-gap: 1em;
@@ -306,6 +306,7 @@ p {
 .masonry .item .box-section {
   border-bottom: 1px solid #e0e0e0;
   font-family: "NexaRegular";
+  background-color: #fff;
 }
 .masonry .item .box-section p {
   margin: 0;
